@@ -1,4 +1,7 @@
 import csv
+import pandas as pd
+
+
 with open('data.csv') as f:
     records = csv.DictReader(f)
     data = list(records)
@@ -14,3 +17,11 @@ with open('countries_i_want.csv') as f:
 
 filtered_data = list(filter(
     lambda x: x['asylum'] in countries_i_want and x['origin'] in countries_i_want, data))
+
+filtered_data = pd.DataFrame(filtered_data)
+filtered_data['value'] = pd.to_numeric(filtered_data['value'], errors='coerce')
+#print(filtered_data.groupby(['asylum', 'origin', 'year'])['value'].sum())
+
+filtered_data = filtered_data.to_dict('records').values()
+
+print(filtered_data[0])

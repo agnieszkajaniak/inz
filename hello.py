@@ -20,7 +20,7 @@ filtered_data = list(filter(
 
 filtered_data = pd.DataFrame(filtered_data)
 filtered_data['value'] = pd.to_numeric(filtered_data['value'], errors='coerce')
-#print(filtered_data.groupby(['asylum', 'origin', 'year'])['value'].sum())
+##print(filtered_data.groupby(['asylum', 'origin', 'year'])['value'].sum())
 
 filtered_data = filtered_data.to_dict('records').values()
 

@@ -18,10 +18,14 @@ filtered_data["value"] = filtered_data["value"].astype(int)
 filtered_data_by_year = filtered_data.groupby(["asylum", "origin", "year"]).sum()
 data_array = filtered_data_by_year.reset_index().as_matrix()
 
+
 data_array = list(map(
-    lambda x: {"origin": x[0], "asylum": x[1], "year": x[2], "value": x[3]},
+    lambda x: {"asylum": x[0],"origin": x[1], "year": x[2], "value": x[3]},
     data_array
 ))
 
+
 with open('result.json', 'w') as fp:
     json.dump(data_array, fp)
+
+

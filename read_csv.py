@@ -8,6 +8,7 @@ data.fillna(0, inplace=True)
 country_names = pd.read_csv("country_names_mapping.csv")
 filtered_data = data[data["asylum"].isin(country_names["name"]) & data["origin"].isin(country_names["name"])]
 
+
 d = country_names[["name", "iso"]]
 dictionary = d.set_index('name').to_dict()["iso"]
 

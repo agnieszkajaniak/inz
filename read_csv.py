@@ -25,6 +25,7 @@ data_array = list(map(
     data_array
 ))
 
+data_array = list(filter(lambda x: x["value"] > 0, data_array))
 
 with open('result.json', 'w') as fp:
     json.dump(data_array, fp)
